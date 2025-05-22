@@ -38,6 +38,7 @@
             margin: auto;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+        
         input, select {
             width: 100%;
             padding: 10px;
@@ -46,15 +47,16 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        button {
+        input[type="button"] {
             background-color: #27ae60;
             color: white;
             border: none;
             cursor: pointer;
         }
-        button:hover {
+        input[type="button"]:hover {
             background-color: #219150;
         }
+
     </style>
 </head>
 <body>
@@ -69,7 +71,7 @@
     <label for="produccionId">ID de Producción:</label>
     <input type="number" name="produccionId" required><br><br>
 
-    <button type="submit" onclick="location.href='listarHuertos.jsp" >Registrar</button>
+    <input type="button" value="listarHuertos" onclick="location.href='listarHuertos.jsp';" />
 </form>
 
 <%-- Mensajes opcionales --%>
