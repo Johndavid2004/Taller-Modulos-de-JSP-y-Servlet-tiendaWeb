@@ -28,20 +28,20 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        input[type="submit"] {
+        input[type="button"] {
             background-color: #27ae60;
             color: white;
             border: none;
             cursor: pointer;
         }
-        input[type="submit"]:hover {
+        input[type="button"]:hover {
             background-color: #219150;
         }
     </style>
 </head>
 <body>
     <h2>Registrar Nueva Producción</h2>
-    <form action="RegistrarProduccion" method="post">
+    <form action="produccion" method="post">
         <label for="tipo">Tipo de Producción:</label>
         <input type="text" id="tipo" name="tipo" required>
 
@@ -57,7 +57,7 @@
         <label for="idHuertoCorral">ID del Huerto o Corral:</label>
         <input type="number" id="idHuertoCorral" name="idHuertoCorral" required>
 
-        <input type="submit" value="Registrar Producción">
+        <input type="button" value="Producción" onclick="location.href='produccion.jsp';" />
     </form>
 </body>
 </html>

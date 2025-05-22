@@ -60,7 +60,7 @@
 <body>
 <h2>Registrar Huerto o Corral</h2>
 
-<form action="RegistroServlet" method="post">
+<form action="listarHuertos" method="post">
     <input type="hidden" name="action" value="registrarHuertoCorral" />
 
     <label for="nombre">Nombre:</label>
@@ -69,7 +69,7 @@
     <label for="produccionId">ID de Producción:</label>
     <input type="number" name="produccionId" required><br><br>
 
-    <button type="submit">Registrar</button>
+    <button type="submit" onclick="location.href='listarHuertos.jsp" >Registrar</button>
 </form>
 
 <%-- Mensajes opcionales --%>
