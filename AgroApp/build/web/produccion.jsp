@@ -103,7 +103,7 @@
         <ul>
             <%
                 List<Produccion> lista = (List<Produccion>) request.getAttribute("lista");
-                if (lista != null) {
+                if (lista != null && !lista.isEmpty()) {
                     for (Produccion p : lista) {
             %>
                 <li><%= p.getId() %> - <%= p.getTipo() %></li>

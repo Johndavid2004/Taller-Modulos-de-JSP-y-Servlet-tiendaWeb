@@ -17,21 +17,36 @@ public class ProduccionServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String tipo = request.getParameter("tipo");
 
-        Produccion produccion = new Produccion();
-        produccion.setTipo(tipo);
+        // Validación simple
+        if (tipo == null || tipo.trim().isEmpty()) {
+            request.setAttribute("error", "El tipo de producción no puede estar vacío.");
+        } else {
+            Produccion produccion = new Produccion();
+            produccion.setTipo(tipo);
 
+            ProduccionDAO dao = new ProduccionDAO();
+            dao.insertar(produccion);
+
+            request.setAttribute("mensaje", "Producción registrada correctamente.");
+        }
+
+        // Siempre listar después de registrar o error
         ProduccionDAO dao = new ProduccionDAO();
-        dao.insertar(produccion);
+        List<Produccion> lista = dao.listarProducciones();
 
-        response.sendRedirect("jsp/produccion.jsp");
+        request.setAttribute("lista", lista);
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/produccion.jsp");
+        rd.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         ProduccionDAO dao = new ProduccionDAO();
-        List<Produccion> lista = dao.listar();
+        List<Produccion> lista = dao.listarProducciones();
 
         request.setAttribute("lista", lista);
         RequestDispatcher rd = request.getRequestDispatcher("jsp/produccion.jsp");

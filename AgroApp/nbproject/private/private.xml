@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/listarHuertos.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/huertoCorral.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/registro.jsp</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/src/java/controlador/ProduccionServlet.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/src/java/dao/ProduccionDAO.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/index.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/RegistroServlet")
 public class RegistroServlet extends HttpServlet {
@@ -17,7 +18,7 @@ public class RegistroServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String action = request.getParameter("action");
 
         if ("registrarProduccion".equals(action)) {
@@ -47,8 +48,14 @@ public class RegistroServlet extends HttpServlet {
         ProduccionDAO dao = new ProduccionDAO();
         dao.insertar(p);
 
+        // ✅ Recuperar lista de producciones para mostrar en el siguiente formulario
+        List<Produccion> listaProduccion = dao.listarProducciones();
+
         request.setAttribute("mensaje", "Producción registrada correctamente.");
-        request.getRequestDispatcher("registro.jsp").forward(request, response);
+        request.setAttribute("listaProduccion", listaProduccion);
+
+        // ✅ Redirigir al formulario de huerto/corral con la lista disponible
+        request.getRequestDispatcher("HuertoCorral.jsp").forward(request, response);
     }
 
     private void registrarHuertoCorral(HttpServletRequest request, HttpServletResponse response)
@@ -80,6 +87,12 @@ public class RegistroServlet extends HttpServlet {
         dao.insertar(h);
 
         request.setAttribute("mensaje", "Huerto o Corral registrado correctamente");
+
+        // ✅ También volvemos a cargar la lista de producciones para mantener el select actualizado
+        ProduccionDAO produccionDAO = new ProduccionDAO();
+        List<Produccion> listaProduccion = produccionDAO.listarProducciones();
+        request.setAttribute("listaProduccion", listaProduccion);
+
         request.getRequestDispatcher("HuertoCorral.jsp").forward(request, response);
     }
 }

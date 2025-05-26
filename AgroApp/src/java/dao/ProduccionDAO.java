@@ -23,8 +23,8 @@ public class ProduccionDAO {
         }
     }
 
-    // Método para obtener una lista de todos los registros de produccion
-    public List<Produccion> listar() {
+    // ✅ Método renombrado para que sea coherente con RegistroServlet
+    public List<Produccion> listarProducciones() {
         List<Produccion> lista = new ArrayList<>();
         String sql = "SELECT * FROM produccion";
 
