@@ -1,0 +1,6 @@
+USE agroapp;
+
+CREATE TABLE produccion (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  tipo VARCHAR(50) NOT NULL
+);
