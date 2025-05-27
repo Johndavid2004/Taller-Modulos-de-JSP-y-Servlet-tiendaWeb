@@ -1,4 +1,4 @@
-package dao;
+package Basedatos;
 
 import modelo.Conexion;
 import modelo.Produccion;
@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProduccionDAO {
+public class ProduccionD {
 
     // Método para insertar un nuevo registro en la tabla produccion
     public void insertar(Produccion p) {

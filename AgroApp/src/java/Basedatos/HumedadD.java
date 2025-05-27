@@ -1,4 +1,4 @@
-package dao;
+package Basedatos;
 
 import modelo.Conexion;
 import modelo.Humedad;
@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HumedadDAO {
+public class HumedadD {
 
     public void insertar(Humedad h) {
         String sql = "INSERT INTO humedad (nivel, fecha, huerto_id) VALUES (?, ?, ?)";

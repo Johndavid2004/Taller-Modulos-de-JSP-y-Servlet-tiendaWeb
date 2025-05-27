@@ -1,6 +1,6 @@
 package controlador;
 
-import dao.ProduccionDAO;
+import Basedatos.ProduccionD;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -27,14 +27,14 @@ public class ProduccionServlet extends HttpServlet {
             Produccion produccion = new Produccion();
             produccion.setTipo(tipo);
 
-            ProduccionDAO dao = new ProduccionDAO();
+            ProduccionD dao = new ProduccionD();
             dao.insertar(produccion);
 
             request.setAttribute("mensaje", "Producción registrada correctamente.");
         }
 
         // Siempre listar después de registrar o error
-        ProduccionDAO dao = new ProduccionDAO();
+        ProduccionD dao = new ProduccionD();
         List<Produccion> lista = dao.listarProducciones();
 
         request.setAttribute("lista", lista);
@@ -45,7 +45,7 @@ public class ProduccionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ProduccionDAO dao = new ProduccionDAO();
+        ProduccionD dao = new ProduccionD();
         List<Produccion> lista = dao.listarProducciones();
 
         request.setAttribute("lista", lista);

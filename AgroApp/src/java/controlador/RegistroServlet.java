@@ -1,7 +1,7 @@
 package controlador;
 
-import dao.ProduccionDAO;
-import dao.HuertoCorralDAO;
+import Basedatos.ProduccionD;
+import Basedatos.HuertoCorralD;
 import modelo.Produccion;
 import modelo.HuertoCorral;
 
@@ -45,7 +45,7 @@ public class RegistroServlet extends HttpServlet {
         Produccion p = new Produccion();
         p.setTipo(tipo);
 
-        ProduccionDAO dao = new ProduccionDAO();
+        ProduccionD dao = new ProduccionD();
         dao.insertar(p);
 
         // ✅ Recuperar lista de producciones para mostrar en el siguiente formulario
@@ -81,15 +81,15 @@ public class RegistroServlet extends HttpServlet {
 
         HuertoCorral h = new HuertoCorral();
         h.setNombre(nombre);
-        h.setProduccionId(produccionId);
+        h.setIdProduccion(produccionId);
 
-        HuertoCorralDAO dao = new HuertoCorralDAO();
+        HuertoCorralD dao = new HuertoCorralD();
         dao.insertar(h);
 
         request.setAttribute("mensaje", "Huerto o Corral registrado correctamente");
 
         // ✅ También volvemos a cargar la lista de producciones para mantener el select actualizado
-        ProduccionDAO produccionDAO = new ProduccionDAO();
+        ProduccionD produccionDAO = new ProduccionD();
         List<Produccion> listaProduccion = produccionDAO.listarProducciones();
         request.setAttribute("listaProduccion", listaProduccion);
 

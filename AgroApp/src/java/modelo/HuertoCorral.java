@@ -3,14 +3,14 @@ package modelo;
 public class HuertoCorral {
     private int id;
     private String nombre;
-    private int produccionId;
+    private int idProduccion;
 
     public HuertoCorral() {}
 
     public HuertoCorral(int id, String nombre, int produccionId) {
         this.id = id;
         this.nombre = nombre;
-        this.produccionId = produccionId;
+        this.idProduccion = produccionId;
     }
 
     public int getId() {
@@ -29,11 +29,12 @@ public class HuertoCorral {
         this.nombre = nombre;
     }
 
-    public int getProduccionId() {
-        return produccionId;
+    public int getIdProduccion() {
+        return idProduccion;
     }
 
-    public void setProduccionId(int produccionId) {
-        this.produccionId = produccionId;
+    public void setIdProduccion(int idProduccion) {
+        this.idProduccion = idProduccion;
     }
+ 
 }

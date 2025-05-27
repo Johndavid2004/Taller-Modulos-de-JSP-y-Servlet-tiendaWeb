@@ -2,85 +2,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Registrar Huerto o Corral</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background-color: #f0f5f9;
-            padding: 40px;
+            font-family: Arial, sans-serif;
             text-align: center;
         }
-        
-        h2 {
-            
-            color: #2a7d8c;
-        }
-        a {
-            display: block;
-            margin: 15px auto;
-            padding: 12px 25px;
-            background-color: #2a7d8c;
-            color: white;
-            text-decoration: none;
-            width: 250px;
-            border-radius: 6px;
-            transition: background-color 0.3s ease;
-        }
-        a:hover {
-            background-color: #1c5a65;
-        }
-        
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 400px;
+        .form-container {
             margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
-        input, select {
-            width: 100%;
+        input[type="text"] {
+            width: 90%;
             padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
             border: 1px solid #ccc;
-            border-radius: 5px;
         }
-        input[type="button"] {
-            background-color: #27ae60;
+        button {
+            padding: 10px 30px;
+            background-color: #28a745;
             color: white;
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 16px;
         }
-        input[type="button"]:hover {
-            background-color: #219150;
-        }
-
     </style>
 </head>
 <body>
 <h2>Registrar Huerto o Corral</h2>
-
-<form action="listarHuertos" method="post">
-    <input type="hidden" name="action" value="registrarHuertoCorral" />
-
-    <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" required><br><br>
-
-    <label for="produccionId">ID de Producción:</label>
-    <input type="number" name="produccionId" required><br><br>
-
-    <input type="button" value="listarHuertos" onclick="location.href='listarHuertos.jsp';" />
-</form>
-
-<%-- Mensajes opcionales --%>
-<% if (request.getAttribute("mensaje") != null) { %>
-    <p style="color: green;"><%= request.getAttribute("mensaje") %></p>
-<% } %>
-<% if (request.getAttribute("error") != null) { %>
-    <p style="color: red;"><%= request.getAttribute("error") %></p>
-<% } %>
-
+<div class="form-container">
+    <form action="RegistroServlet" method="post">
+        <input type="hidden" name="accion" value="registrarHuertoCorral">
+        Nombre: <br>
+        <input type="text" name="nombre"><br>
+        ID de Producción: <br>
+        <input type="text" name="idProduccion"><br>
+        <button type="submit">Registrar</button>
+    </form>
+    <br>
+    <form action="RegistroServlet" method="get">
+        <input type="hidden" name="accion" value="listarHuertos">
+        <button type="submit">Listar Huertos</button>
+    </form>
+</div>
 </body>
 </html>

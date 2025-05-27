@@ -1,4 +1,4 @@
-package dao;
+package Basedatos;
 
 import modelo.Conexion;
 import modelo.Enfermedad;
@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnfermedadDAO {
+public class EnfermedadD {
 
     public void insertar(Enfermedad e) {
         String sql = "INSERT INTO enfermedad (nombre, descripcion, huerto_id) VALUES (?, ?, ?)";

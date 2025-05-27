@@ -1,11 +1,11 @@
-package dao;
+package Basedatos;
 
 import modelo.Conexion;
 import modelo.HuertoCorral;
 import java.sql.*;
 import java.util.*;
 
-public class HuertoCorralDAO {
+public class HuertoCorralD {
 
     public void insertar(HuertoCorral h) {
         String sql = "INSERT INTO huerto (nombre, produccion_id) VALUES (?, ?)";
@@ -13,7 +13,7 @@ public class HuertoCorralDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, h.getNombre());
-            ps.setInt(2, h.getProduccionId());
+            ps.setInt(2, h.getIdProduccion());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class HuertoCorralDAO {
                 HuertoCorral h = new HuertoCorral();
                 h.setId(rs.getInt("id"));
                 h.setNombre(rs.getString("nombre"));
-                h.setProduccionId(rs.getInt("produccion_id"));
+                h.setIdProduccion(rs.getInt("produccion_id"));
                 lista.add(h);
             }
 
