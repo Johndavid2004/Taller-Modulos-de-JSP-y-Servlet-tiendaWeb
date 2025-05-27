@@ -16,6 +16,7 @@ import java.util.List;
 public class RegistroServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -23,8 +24,10 @@ public class RegistroServlet extends HttpServlet {
 
         if ("registrarProduccion".equals(action)) {
             registrarProduccion(request, response);
-        } else if ("registrarHuertoCorral".equals(action)) {
+        } else if ("huertoCorral".equals(action)) {
             registrarHuertoCorral(request, response);
+        } else if ("listarHuertos".equals(action)) {
+            listarHuertos(request, response);
         } else {
             request.setAttribute("error", "Acción no válida");
             request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -48,13 +51,11 @@ public class RegistroServlet extends HttpServlet {
         ProduccionD dao = new ProduccionD();
         dao.insertar(p);
 
-        // ✅ Recuperar lista de producciones para mostrar en el siguiente formulario
         List<Produccion> listaProduccion = dao.listarProducciones();
 
         request.setAttribute("mensaje", "Producción registrada correctamente.");
         request.setAttribute("listaProduccion", listaProduccion);
 
-        // ✅ Redirigir al formulario de huerto/corral con la lista disponible
         request.getRequestDispatcher("HuertoCorral.jsp").forward(request, response);
     }
 
@@ -88,11 +89,31 @@ public class RegistroServlet extends HttpServlet {
 
         request.setAttribute("mensaje", "Huerto o Corral registrado correctamente");
 
-        // ✅ También volvemos a cargar la lista de producciones para mantener el select actualizado
         ProduccionD produccionDAO = new ProduccionD();
         List<Produccion> listaProduccion = produccionDAO.listarProducciones();
         request.setAttribute("listaProduccion", listaProduccion);
 
         request.getRequestDispatcher("HuertoCorral.jsp").forward(request, response);
+    }
+
+    private void listarHuertos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HuertoCorralD dao = new HuertoCorralD();
+        List<HuertoCorral> lista = dao.obtenerHuertosCorrales();
+
+        request.setAttribute("listaHuertos", lista);
+        request.getRequestDispatcher("listarHuertos.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Servlet de Registro para Huerto/Corral";
     }
 }

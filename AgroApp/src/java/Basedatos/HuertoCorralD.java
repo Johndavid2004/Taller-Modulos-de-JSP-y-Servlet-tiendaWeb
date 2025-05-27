@@ -42,4 +42,9 @@ public class HuertoCorralD {
 
         return lista;
     }
+
+    // ✅ Nuevo método requerido
+    public List<HuertoCorral> obtenerHuertosCorrales() {
+        return listar(); // simplemente llama al método existente
+    }
 }
