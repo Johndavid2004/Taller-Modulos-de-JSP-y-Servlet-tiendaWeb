@@ -32,7 +32,6 @@
         }
 
         input[type="text"],
-        input[type="date"],
         select {
             width: 100%;
             padding: 8px;
@@ -85,8 +84,8 @@
             <label>Nombre de la Enfermedad:</label>
             <input type="text" name="nombre" required>
 
-            <label>Fecha de Detección:</label>
-            <input type="date" name="fecha" required>
+            <label>Descripción:</label>
+            <input type="text" name="descripcion" required>
 
             <label>Huerto/Corral:</label>
             <select name="huertoId">
@@ -100,7 +99,7 @@
                 %>
             </select>
 
-            <input type="hidden" name="accion" value="registrarEnfermedad">
+            <input type="hidden" name="action" value="registrarEnfermedad">
             <input type="submit" value="Registrar">
         </form>
     </div>

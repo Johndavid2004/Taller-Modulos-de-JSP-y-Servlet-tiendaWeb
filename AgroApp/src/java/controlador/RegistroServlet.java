@@ -2,8 +2,10 @@ package controlador;
 
 import Basedatos.ProduccionD;
 import Basedatos.HuertoCorralD;
+import Basedatos.EnfermedadD;
 import modelo.Produccion;
 import modelo.HuertoCorral;
+import modelo.Enfermedad;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -28,6 +30,8 @@ public class RegistroServlet extends HttpServlet {
             registrarHuertoCorral(request, response);
         } else if ("listarHuertos".equals(action)) {
             listarHuertos(request, response);
+        } else if ("registrarEnfermedad".equals(action)) {
+            registrarEnfermedad(request, response);
         } else {
             request.setAttribute("error", "Acción no válida");
             request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -106,6 +110,48 @@ public class RegistroServlet extends HttpServlet {
         request.getRequestDispatcher("listarHuertos.jsp").forward(request, response);
     }
 
+    private void registrarEnfermedad(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String nombre = request.getParameter("nombre");
+        String descripcion = request.getParameter("descripcion");
+        String huertoIdStr = request.getParameter("huertoId");
+
+        if (nombre == null || nombre.trim().isEmpty() ||
+            descripcion == null || descripcion.trim().isEmpty() ||
+            huertoIdStr == null || huertoIdStr.trim().isEmpty()) {
+
+            request.setAttribute("error", "Todos los campos son obligatorios.");
+            request.getRequestDispatcher("registrarEnfermedad.jsp").forward(request, response);
+            return;
+        }
+
+        int huertoId;
+        try {
+            huertoId = Integer.parseInt(huertoIdStr);
+        } catch (NumberFormatException e) {
+            request.setAttribute("error", "ID de huerto inválido.");
+            request.getRequestDispatcher("registrarEnfermedad.jsp").forward(request, response);
+            return;
+        }
+
+        Enfermedad enfermedad = new Enfermedad();
+        enfermedad.setNombre(nombre);
+        enfermedad.setDescripcion(descripcion);
+        enfermedad.setHuertoId(huertoId);
+
+        EnfermedadD dao = new EnfermedadD();
+        dao.insertar(enfermedad);
+
+        request.setAttribute("mensaje", "Enfermedad registrada correctamente.");
+
+        HuertoCorralD huertoDao = new HuertoCorralD();
+        List<HuertoCorral> listaHuertos = huertoDao.listar();
+        request.setAttribute("listaHuertos", listaHuertos);
+
+        request.getRequestDispatcher("registrarEnfermedad.jsp").forward(request, response);
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -114,6 +160,6 @@ public class RegistroServlet extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "Servlet de Registro para Huerto/Corral";
+        return "Servlet de Registro para Huerto/Corral y Enfermedades";
     }
 }

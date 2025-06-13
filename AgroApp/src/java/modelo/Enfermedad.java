@@ -5,6 +5,7 @@ public class Enfermedad {
     private String nombre;
     private String descripcion;
     private int huertoId;
+    private String huertoNombre;  // 🔹 nuevo atributo
 
     // Getters y Setters
     public int getId() {
@@ -37,5 +38,13 @@ public class Enfermedad {
 
     public void setHuertoId(int huertoId) {
         this.huertoId = huertoId;
+    }
+
+    public String getHuertoNombre() {
+        return huertoNombre;
+    }
+
+    public void setHuertoNombre(String huertoNombre) {
+        this.huertoNombre = huertoNombre;
     }
 }
