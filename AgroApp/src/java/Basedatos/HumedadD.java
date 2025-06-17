@@ -3,13 +3,27 @@ package Basedatos;
 import modelo.Conexion;
 import modelo.Humedad;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
+/**
+ * Clase que gestiona el registro de niveles de humedad en la base de datos.
+ * Forma parte del módulo agrícola para monitoreo ambiental.
+ */
 public class HumedadD {
 
-    public void insertar(Humedad h) {
+    /**
+     * Guarda un nuevo registro de humedad asociado a un huerto o corral.
+     *
+     * @param h Objeto Humedad con los datos a almacenar.
+     */
+    public void registrarNivelHumedad(Humedad h) {
+        if (h == null || h.getNivel() < 0 || h.getHuertoId() <= 0) {
+            System.out.println("⚠️ Datos de humedad no válidos. Registro cancelado.");
+            return;
+        }
+
         String sql = "INSERT INTO humedad (nivel, fecha, huerto_id) VALUES (?, ?, ?)";
 
         try (Connection con = Conexion.conectar();
@@ -18,34 +32,17 @@ public class HumedadD {
             ps.setDouble(1, h.getNivel());
             ps.setDate(2, h.getFecha());
             ps.setInt(3, h.getHuertoId());
-            ps.executeUpdate();
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+            int resultado = ps.executeUpdate();
 
-    public List<Humedad> listar() {
-        List<Humedad> lista = new ArrayList<>();
-        String sql = "SELECT * FROM humedad";
-
-        try (Connection con = Conexion.conectar();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                Humedad h = new Humedad();
-                h.setId(rs.getInt("id"));
-                h.setNivel(rs.getDouble("nivel"));
-                h.setFecha(rs.getDate("fecha"));
-                h.setHuertoId(rs.getInt("huerto_id"));
-                lista.add(h);
+            if (resultado > 0) {
+                System.out.println("✅ Registro de humedad exitoso.");
+            } else {
+                System.out.println("⚠️ No se insertaron datos en la tabla humedad.");
             }
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.err.println("❌ Error al registrar humedad: " + e.getMessage());
         }
-
-        return lista;
     }
 }
