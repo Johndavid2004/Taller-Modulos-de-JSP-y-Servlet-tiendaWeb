@@ -39,7 +39,7 @@ public class EnfermedadD {
             e.setNombre(rs.getString("nombre"));
             e.setDescripcion(rs.getString("descripcion"));
             e.setHuertoId(rs.getInt("huerto_id"));
-            e.setHuertoNombre(rs.getString("huertoNombre"));  // ← nuevo campo
+            e.setHuertoNombre(rs.getString("huertoNombre"));  //
             lista.add(e);
         }
 
@@ -49,5 +49,9 @@ public class EnfermedadD {
 
     return lista;
 }
+
+    public void guardar(Enfermedad enfermedad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }

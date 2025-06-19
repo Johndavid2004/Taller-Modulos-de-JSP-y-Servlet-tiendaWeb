@@ -10,38 +10,69 @@
             padding: 20px;
         }
         h2 {
+            text-align: center;
             color: #2c3e50;
         }
         form {
             background-color: #fff;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
-            width: 400px;
+            max-width: 450px;
             margin: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        input, select {
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
             width: 100%;
             padding: 10px;
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin-top: 6px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 6px;
         }
-        input[type="button"] {
+        input[type="submit"] {
+            margin-top: 20px;
+            width: 100%;
             background-color: #27ae60;
-            color: white;
+            color: #fff;
+            padding: 10px;
             border: none;
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
         }
-        input[type="button"]:hover {
+        input[type="submit"]:hover {
             background-color: #219150;
+        }
+        .volver {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .volver a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ccc;
+            color: #000;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .volver a:hover {
+            background-color: #999;
         }
     </style>
 </head>
 <body>
     <h2>Registrar Nueva Producción</h2>
-    <form action="produccion" method="post">
+    <form action="RegistroServlet" method="post">
         <label for="tipo">Tipo de Producción:</label>
         <input type="text" id="tipo" name="tipo" required>
 
@@ -57,7 +88,13 @@
         <label for="idHuertoCorral">ID del Huerto o Corral:</label>
         <input type="number" id="idHuertoCorral" name="idHuertoCorral" required>
 
-        <input type="button" value="Producción" onclick="location.href='produccion.jsp';" />
+        <input type="hidden" name="action" value="registrarProduccion">
+
+        <input type="submit" value="Registrar Producción">
     </form>
+
+    <div class="volver">
+        <a href="index.jsp">Volver al Menú Principal</a>
+    </div>
 </body>
 </html>

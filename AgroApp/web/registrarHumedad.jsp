@@ -91,16 +91,16 @@
             <label>Huerto/Corral:</label>
             <select name="huertoId">
                 <%
-                    HuertoCorralD dao = new HuertoCorralD();
-                    for (HuertoCorral h : dao.listar()) {
+                    HuertoCorralD controladorHuertos = new HuertoCorralD();
+                    for (HuertoCorral item : controladorHuertos.consultarTodos()) {
                 %>
-                    <option value="<%= h.getId() %>"><%= h.getNombre() %></option>
+                    <option value="<%= item.getId() %>"><%= item.getNombre() %></option>
                 <%
                     }
                 %>
             </select>
 
-            <input type="hidden" name="accion" value="registrarHumedad">
+            <input type="hidden" name="action" value="registrarHumedad">
             <input type="submit" value="Registrar">
         </form>
     </div>
@@ -110,3 +110,4 @@
     </div>
 </body>
 </html>
+

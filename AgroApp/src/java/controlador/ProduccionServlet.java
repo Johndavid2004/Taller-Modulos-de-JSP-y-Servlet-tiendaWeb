@@ -15,38 +15,32 @@ import java.util.List;
 @WebServlet("/ProduccionServlet")
 public class ProduccionServlet extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String tipo = request.getParameter("tipo");
 
-        // Validación simple
         if (tipo == null || tipo.trim().isEmpty()) {
             request.setAttribute("error", "El tipo de producción no puede estar vacío.");
-        } else {
-            Produccion produccion = new Produccion();
-            produccion.setTipo(tipo);
-
-            ProduccionD dao = new ProduccionD();
-            dao.insertar(produccion);
-
-            request.setAttribute("mensaje", "Producción registrada correctamente.");
+            RequestDispatcher rd = request.getRequestDispatcher("jsp/produccion.jsp");
+            rd.forward(request, response);
+            return;
         }
 
-        // Siempre listar después de registrar o error
-        ProduccionD dao = new ProduccionD();
-        List<Produccion> lista = dao.listarProducciones();
+        Produccion nuevaProduccion = new Produccion();
+        nuevaProduccion.setTipo(tipo);
 
-        request.setAttribute("lista", lista);
-        RequestDispatcher rd = request.getRequestDispatcher("jsp/produccion.jsp");
-        rd.forward(request, response);
+        ProduccionD manejadorProduccion = new ProduccionD();
+        manejadorProduccion.insertar(nuevaProduccion);
+
+        response.sendRedirect("jsp/produccion.jsp");
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        ProduccionD dao = new ProduccionD();
-        List<Produccion> lista = dao.listarProducciones();
+        ProduccionD manejadorProduccion = new ProduccionD();
+        List<Produccion> lista = manejadorProduccion.listarProducciones();
 
         request.setAttribute("lista", lista);
         RequestDispatcher rd = request.getRequestDispatcher("jsp/produccion.jsp");

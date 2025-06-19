@@ -90,10 +90,10 @@
             <label>Huerto/Corral:</label>
             <select name="huertoId">
                 <%
-                    Basedatos.HuertoCorralD dao = new Basedatos.HuertoCorralD();
-                    for (HuertoCorral h : dao.listar()) {
+                    HuertoCorralD controladorHuertos = new HuertoCorralD();
+                    for (HuertoCorral item : controladorHuertos.consultarTodos()) {
                 %>
-                    <option value="<%= h.getId() %>"><%= h.getNombre() %></option>
+                    <option value="<%= item.getId() %>"><%= item.getNombre() %></option>
                 <%
                     }
                 %>
@@ -109,3 +109,4 @@
     </div>
 </body>
 </html>
+

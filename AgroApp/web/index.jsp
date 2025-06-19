@@ -9,11 +9,11 @@
             padding: 40px;
             text-align: center;
         }
-        
+
         h1 {
-            
             color: #2a7d8c;
         }
+
         a {
             display: block;
             margin: 15px auto;
@@ -25,6 +25,7 @@
             border-radius: 6px;
             transition: background-color 0.3s ease;
         }
+
         a:hover {
             background-color: #1c5a65;
         }
@@ -38,27 +39,3 @@
     <a href="registrarHumedad.jsp">Registrar Humedad</a>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

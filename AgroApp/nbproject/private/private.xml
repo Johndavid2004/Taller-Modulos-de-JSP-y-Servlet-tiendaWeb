@@ -3,17 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/index.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/registrarEnfermedad.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/WEB-INF/listarEnfermedades.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/src/java/modelo/Enfermedad.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/src/java/Basedatos/EnfermedadD.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/registrarHumedad.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/src/java/modelo/Humedad.java</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/src/java/Basedatos/HumedadD.java</file>
             <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/registro.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/web/produccion.jsp</file>
-            <file>file:/C:/Users/ASUS/OneDrive/Desktop/Taller-Modulos-de-JSP-y-Servlet-tiendaWeb/AgroApp/src/java/controlador/ProduccionServlet.java</file>
         </group>
     </open-files>
 </project-private>

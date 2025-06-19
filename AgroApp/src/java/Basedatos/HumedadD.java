@@ -45,4 +45,8 @@ public class HumedadD {
             System.err.println("❌ Error al registrar humedad: " + e.getMessage());
         }
     }
+
+    public void guardar(Humedad humedad) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
